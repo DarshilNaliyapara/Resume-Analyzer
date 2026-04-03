@@ -1,65 +1,63 @@
-import Image from "next/image";
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { getAccessToken } from '@/lib/api'
 
 export default function Home() {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (getAccessToken()) router.replace('/dashboard')
+  }, [router])
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen flex flex-col bg-bg text-text">
+      <nav className="animate-fade-in flex justify-between items-center px-5 md:px-8 py-5 border-b border-border">
+        <span className="font-display font-extrabold text-md md:text-base text-white tracking-tight">
+          RESUME ANALYZER
+        </span>
+        <div className="flex gap-2 md:gap-3">
+          <Link href="/login"
+            className="font-mono text-sm text-muted border border-border px-3 py-1.5 rounded hover:text-white hover:border-border-hover transition-all">
+            login
+          </Link>
+          <Link href="/register"
+            className="font-mono text-sm text-bg bg-white px-3 py-1.5 rounded hover:opacity-80 transition-opacity">
+            get started
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </nav>
+
+      <div className="flex-1 flex flex-col justify-center px-5 md:px-8 py-16 md:py-24 max-w-4xl">
+        <p className="animate-fade-up font-mono text-sm text-muted tracking-widest mb-4">
+          AI-POWERED · FREE TO START
+        </p>
+        <h1 className="animate-fade-up delay-1 font-display font-extrabold leading-none tracking-tighter text-white mb-6 md:mb-8"
+          style={{ fontSize: 'clamp(2.5rem, 8vw, 7rem)' }}>
+          Know your<br />
+          <span className="text-muted">fit score.</span>
+        </h1>
+        <p className="animate-fade-up delay-2 font-mono text-sm text-muted max-w-md leading-relaxed mb-10 md:mb-12">
+          Upload your resume and paste a job description. Get an AI score,
+          skill gaps, and actionable suggestions in under 30 seconds.
+        </p>
+        <div className="animate-fade-up delay-3 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <Link href="/register"
+            className="font-mono text-sm font-medium text-bg bg-white px-6 py-3 rounded hover:opacity-80 transition-opacity">
+            start free →
+          </Link>
+          <span className="font-mono text-sm text-muted">
+            3 analyses/month free · no credit card
+          </span>
         </div>
-      </main>
-    </div>
-  );
+      </div>
+
+      <div className="animate-fade-in delay-5 px-5 md:px-8 py-4 flex flex-wrap gap-4 md:gap-8 border-t border-border">
+        {['PDF upload', 'URL scraping', 'Skill gap analysis', 'Pro plan unlimited'].map((f) => (
+          <span key={f} className="font-mono text-sm text-muted">{f}</span>
+        ))}
+      </div>
+    </main>
+  )
 }
