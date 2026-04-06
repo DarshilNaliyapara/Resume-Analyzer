@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import api from '@/lib/api'
-import { EyeOffIcon,EyeIcon } from 'lucide-react'
+import { EyeOffIcon,EyeIcon, ArrowLeft } from 'lucide-react'
 export default function Register() {
     const [form, setForm] = useState({
         email: '', name: '', password: '', confirmPassword: ''
@@ -74,15 +74,15 @@ export default function Register() {
             <div className="animate-fade-up w-full max-w-sm">
 
                 <div className="mb-8">
-                    <Link href="/" className="font-mono text-sm text-muted tracking-widest hover:text-white transition-colors">
-                        ← RESUME ANALYZER
+                    <Link href="/" className="font-mono text-sm text-muted tracking-widest hover:text-white transition-colors flex items-center gap-2">
+                        <ArrowLeft className="w-4 h-4" /> RESUMALYZE
                     </Link>
                 </div>
 
                 <h1 className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight mb-1">
                     Create account
                 </h1>
-                <p className="font-mono text-xs text-muted mb-8">
+                <p className="font-mono text-sm text-muted mb-8">
                     3 free analyses per month
                 </p>
 

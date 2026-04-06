@@ -34,16 +34,12 @@ export default function Home() {
     <main className="min-h-screen flex flex-col bg-bg text-text">
       <nav className="animate-fade-in flex justify-between items-center px-5 md:px-8 py-5 border-b border-border">
         <span className="font-display font-extrabold text-sm md:text-base text-white tracking-tight">
-          RESUME ANALYZER
+          RESUMALYZE
         </span>
         <div className="flex gap-2 md:gap-3">
           <Link href="/login"
             className="font-mono text-sm text-muted border border-border px-3 py-1.5 rounded hover:text-white hover:border-border-hover transition-all">
             login
-          </Link>
-          <Link href="/register"
-            className="font-mono text-sm text-bg bg-white px-3 py-1.5 rounded hover:opacity-80 transition-opacity">
-            get started
           </Link>
         </div>
       </nav>

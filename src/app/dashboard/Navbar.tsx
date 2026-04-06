@@ -1,6 +1,6 @@
 import api, { clearTokens } from "@/lib/api";
-import router from "next/router";
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
 export type Plan = { plan: string; analyses_remaining: number; limit: number | string }
 type user = { display_name: string }
 type Prop = {
@@ -10,6 +10,7 @@ type Prop = {
 }
 
 export default function Navbar({ plan, user, fetchData }: Prop) {
+    const router = useRouter();
     const [menuOpen, setMenuOpen] = useState(false)
 
     const handleLogout = () => { clearTokens(); router.push('/login') }
@@ -18,7 +19,7 @@ export default function Navbar({ plan, user, fetchData }: Prop) {
         <nav className="animate-fade-in sticky top-0 z-50 bg-bg border-b border-border">
             <div className="flex justify-between items-center px-4 md:px-6 py-4">
                 <span className="font-display font-extrabold text-sm md:text-base text-white tracking-tight">
-                    RESUME ANALYZER
+                    RESUMALYZE
                 </span>
 
                 {/* Desktop nav */}

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { saveTokens } from '@/lib/api'
 import api from '@/lib/api'
 import OAuthButtons from '@/components/OAuthButtons'
-import { EyeOffIcon, EyeIcon } from 'lucide-react'
+import { EyeOffIcon, EyeIcon, ArrowLeft } from 'lucide-react'
 
 export default function Login() {
     const router = useRouter()
@@ -33,15 +33,15 @@ export default function Login() {
         <main className="min-h-screen flex items-center justify-center bg-bg px-5 py-10">
             <div className="animate-fade-up w-full max-w-sm">
                 <div className="mb-8 md:mb-10">
-                    <Link href="/" className="font-mono text-sm text-muted tracking-widest hover:text-white transition-colors">
-                        ← RESUME ANALYZER
+                    <Link href="/" className="font-mono text-sm text-muted tracking-widest hover:text-white transition-colors flex items-center gap-2">
+                        <ArrowLeft className="w-4 h-4" /> RESUMALYZE
                     </Link>
                 </div>
 
                 <h1 className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight mb-1">
                     Welcome back
                 </h1>
-                <p className="font-mono text-xs text-muted mb-8">login to your account</p>
+                <p className="font-mono text-sm text-muted mb-8">login to your account</p>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     {[
